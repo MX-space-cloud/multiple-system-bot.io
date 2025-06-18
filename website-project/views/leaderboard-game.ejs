@@ -1,0 +1,226 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-lg-10 mx-auto">
+      <div class="card shadow-lg border-0 rounded-lg">
+        <div class="card-header bg-primary text-white">
+          <h2 class="text-center mb-0"><%= gameIcon %> <%= gameName %> Leaderboard</h2>
+        </div>
+        <div class="card-body">
+          <!-- Game Stats -->
+          <div class="row mb-4">
+            <% if (gameType === 'collaborative') { %>
+              <div class="col-md-3 text-center mb-3">
+                <div class="card bg-light h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">⚔️ Total Raids</h5>
+                    <p class="card-text display-4"><%= leaderboard.stats.totalRaids %></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 text-center mb-3">
+                <div class="card bg-light h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">👥 Teams</h5>
+                    <p class="card-text display-4"><%= leaderboard.stats.totalTeams %></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 text-center mb-3">
+                <div class="card bg-light h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">📊 Avg. Score</h5>
+                    <p class="card-text display-4"><%= leaderboard.stats.averageScore %></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 text-center mb-3">
+                <div class="card bg-light h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">💰 Top Reward</h5>
+                    <p class="card-text display-4"><%= leaderboard.stats.topEarnedReward %></p>
+                  </div>
+                </div>
+              </div>
+            <% } else if (gameType === 'trivia') { %>
+              <div class="col-md-3 text-center mb-3">
+                <div class="card bg-light h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">❓ Questions</h5>
+                    <p class="card-text display-4"><%= leaderboard.stats.totalQuestions %></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 text-center mb-3">
+                <div class="card bg-light h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">📚 Categories</h5>
+                    <p class="card-text display-4"><%= leaderboard.stats.categories %></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 text-center mb-3">
+                <div class="card bg-light h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">📊 Avg. Score</h5>
+                    <p class="card-text display-4"><%= leaderboard.stats.averageScore %>%</p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 text-center mb-3">
+                <div class="card bg-light h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">🏆 Perfect Rounds</h5>
+                    <p class="card-text display-4"><%= leaderboard.stats.perfectRounds %></p>
+                  </div>
+                </div>
+              </div>
+            <% } else if (gameType === 'rps') { %>
+              <div class="col-md-3 text-center mb-3">
+                <div class="card bg-light h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">🎮 Total Games</h5>
+                    <p class="card-text display-4"><%= leaderboard.stats.totalGames %></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 text-center mb-3">
+                <div class="card bg-light h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">🪨 Rock Wins</h5>
+                    <p class="card-text display-4"><%= leaderboard.stats.rockWins %></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 text-center mb-3">
+                <div class="card bg-light h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">📄 Paper Wins</h5>
+                    <p class="card-text display-4"><%= leaderboard.stats.paperWins %></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-3 text-center mb-3">
+                <div class="card bg-light h-100">
+                  <div class="card-body">
+                    <h5 class="card-title">✂️ Scissor Wins</h5>
+                    <p class="card-text display-4"><%= leaderboard.stats.scissorsWins %></p>
+                  </div>
+                </div>
+              </div>
+            <% } %>
+          </div>
+
+          <!-- How to Play -->
+          <div class="card mb-4">
+            <div class="card-header bg-light">
+              <h4 class="mb-0">How to Play <%= gameName %></h4>
+            </div>
+            <div class="card-body">
+              <% if (gameType === 'collaborative') { %>
+                <p>Join forces with other players to defeat powerful raid bosses!</p>
+                <ol>
+                  <li>Use <code>/raid start</code> to begin a new raid</li>
+                  <li>Other players can join with <code>/raid join</code></li>
+                  <li>Coordinate your attacks and use special abilities</li>
+                  <li>Defeat the boss to earn rewards and climb the leaderboard</li>
+                  <li>Create or join teams with <code>/raid team</code> for even greater rewards</li>
+                </ol>
+                <div class="alert alert-info">
+                  <i class="fas fa-info-circle me-2"></i> Raid difficulty scales with the number of participants. The more players, the greater the challenge and rewards!
+                </div>
+              <% } else if (gameType === 'trivia') { %>
+                <p>Test your knowledge across a variety of categories!</p>
+                <ol>
+                  <li>Use <code>/trivia</code> to start a new trivia question</li>
+                  <li>Select from different categories or play random</li>
+                  <li>Answer correctly to earn coins and experience</li>
+                  <li>Challenge yourself with harder difficulties for bigger rewards</li>
+                  <li>Compete with friends to see who has the most knowledge</li>
+                </ol>
+                <div class="alert alert-info">
+                  <i class="fas fa-info-circle me-2"></i> Streak bonuses! Answer multiple questions correctly in a row for bonus rewards.
+                </div>
+              <% } else if (gameType === 'rps') { %>
+                <p>Challenge the bot to Rock Paper Scissors with betting!</p>
+                <ol>
+                  <li>Use <code>/rps</code> to start a new game</li>
+                  <li>Choose your bet amount</li>
+                  <li>Select rock, paper, or scissors</li>
+                  <li>Win to double your bet, lose and forfeit your coins</li>
+                  <li>Track your win/loss ratio and climb the leaderboard</li>
+                </ol>
+                <div class="alert alert-info">
+                  <i class="fas fa-info-circle me-2"></i> Higher bets earn more experience points, even when you lose!
+                </div>
+              <% } %>
+            </div>
+          </div>
+
+          <!-- Top Players -->
+          <h3 class="border-bottom pb-2 mb-3">🏆 Top Players</h3>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead class="table-light">
+                <tr>
+                  <th>Rank</th>
+                  <th>Player</th>
+                  <th>Score</th>
+                  <th>Games</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% leaderboard.topPlayers.forEach((player, index) => { %>
+                  <tr>
+                    <td>
+                      <% if (index === 0) { %>
+                        <span class="badge bg-warning text-dark">🥇 1st</span>
+                      <% } else if (index === 1) { %>
+                        <span class="badge bg-secondary">🥈 2nd</span>
+                      <% } else if (index === 2) { %>
+                        <span class="badge bg-danger">🥉 3rd</span>
+                      <% } else { %>
+                        <span class="badge bg-light text-dark"><%= index + 1 %>th</span>
+                      <% } %>
+                    </td>
+                    <td><%= player.icon %> <strong><%= player.username %></strong></td>
+                    <td><span class="badge bg-primary"><%= player.score %></span></td>
+                    <td><%= player.gamesPlayed %></td>
+                  </tr>
+                <% }); %>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Navigation -->
+          <div class="d-flex justify-content-between mt-4">
+            <a href="/leaderboard" class="btn btn-outline-secondary">
+              <i class="fas fa-arrow-left me-2"></i> Back to All Leaderboards
+            </a>
+            <div>
+              <% otherGames.forEach(game => { %>
+                <a href="/leaderboard/<%= game %>" class="btn btn-outline-primary me-2">
+                  <% if (game === 'collaborative') { %>
+                    <i class="fas fa-users me-1"></i> Raid Battles
+                  <% } else if (game === 'trivia') { %>
+                    <i class="fas fa-question-circle me-1"></i> Trivia
+                  <% } else if (game === 'rps') { %>
+                    <i class="fas fa-hand-rock me-1"></i> RPS
+                  <% } %>
+                </a>
+              <% }); %>
+            </div>
+          </div>
+
+          <!-- Add Bot CTA -->
+          <div class="text-center mt-5">
+            <h4>Want to join the fun?</h4>
+            <p>Add our bot to your Discord server and start your own adventure!</p>
+            <a href="/" class="btn btn-lg btn-success">
+              <i class="fas fa-robot me-2"></i> Add Bot to Your Server
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
