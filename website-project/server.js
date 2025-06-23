@@ -4,15 +4,15 @@ const expressLayouts = require("express-ejs-layouts");
 require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = PORT || 5000;
 
 // Get the CLIENT_ID from .env file
-const CLIENT_ID = process.env.CLIENT_ID || "1356256774348341292";
+const CLIENT_ID = CLIENT_ID || "1356256774348341292";
 // The permissions your bot needs - this number represents the combination of Discord permissions
 // 268435456 is for "Manage Server" permission
 // 8 is for "Administrator" permission
 // 3149056 is for (Manage channels, Manage roles, Manage messages, etc.)
-const PERMISSIONS = "268435456";
+const PERMISSIONS = "8";
 // You can use this tool to calculate permissions: https://discordapi.com/permissions.html
 
 // OAuth2 scopes for bot
@@ -72,7 +72,7 @@ app.get("/", (req, res) => {
     serversCount: "100+",
     usersCount: "5,000+",
     supportServer:
-      process.env.SUPPORT_SERVER || "https://discord.gg/yourinvitelink",
+      SUPPORT_SERVER || "https://discord.gg/axwg9HWbpW",
   });
 });
 
@@ -86,7 +86,7 @@ app.get("/commands", (req, res) => {
 
 app.get("/support", (req, res) => {
   res.redirect(
-    process.env.SUPPORT_SERVER || "https://discord.gg/yourinvitelink"
+    SUPPORT_SERVER || "https://discord.gg/axwg9HWbpW"
   );
 });
 
